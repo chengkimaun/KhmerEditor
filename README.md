@@ -1,1 +1,1 @@
-# This is KhmerEditor
+# This is Khmer Editor
