@@ -161,18 +161,18 @@
 <body class="bg-[#f8fafc] dark:bg-darkbg text-gray-800 dark:text-gray-200 antialiased selection:bg-blue-200 selection:text-blue-900 transition-colors duration-300 flex flex-col min-h-screen">
 
     <!-- Navigation -->
-    <nav class="fixed w-full bg-white/95 dark:bg-darkbg/95 backdrop-blur-md shadow-sm z-50 transition-colors duration-300 border-b border-gray-100 dark:border-slate-800 shrink-0">
+    <nav class="fixed top-0 left-0 w-full bg-white/95 dark:bg-darkbg/95 backdrop-blur-md shadow-sm z-50 transition-colors duration-300 border-b border-gray-100 dark:border-slate-800 shrink-0">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-20 items-center">
                 <!-- Logo & Nav Badge -->
-                <div class="flex items-center gap-3 z-50 relative">
-                    <a href="#home" class="flex items-center gap-2 sm:gap-4 text-xl sm:text-2xl font-bold brand-blue dark:text-blue-400 font-inter">
-                        <img src="logo-filled.png" alt="Logo" class="w-8 h-8 sm:w-10 sm:h-10 object-contain">
-                        Khmer Editor
+                <div class="flex items-center gap-2 sm:gap-3 z-50 relative flex-nowrap overflow-hidden">
+                    <a href="#home" class="flex items-center gap-2 sm:gap-3 text-lg sm:text-2xl font-bold brand-blue dark:text-blue-400 font-inter shrink-0">
+                        <img src="logo-filled.png" alt="Logo" class="w-8 h-8 sm:w-10 sm:h-10 object-contain shrink-0">
+                        <span class="truncate">Khmer Editor</span>
                     </a>
-                    <!-- Nav Promo Badge -->
-                    <a href="#pricing" id="nav-promo-badge" class="bg-gradient-to-r from-red-500 to-rose-600 text-white px-2.5 py-1 rounded-full text-[10px] sm:text-xs font-bold shadow-sm hover:shadow hover:brightness-110 transition-all duration-300 flex items-center gap-1 border border-red-400/50 whitespace-nowrap opacity-0 pointer-events-none scale-95 origin-left">
-                        <span>🎁 30% OFF</span>
+                    <!-- Nav Promo Badge (Now uses Opacity to reserve space securely) -->
+                    <a href="#pricing" id="nav-promo-badge" class="bg-gradient-to-r from-red-500 to-rose-600 text-white px-2 py-1 sm:px-2.5 rounded-full text-[10px] sm:text-xs font-bold shadow-sm hover:brightness-110 transition-all duration-300 flex items-center gap-1 border border-red-400/50 whitespace-nowrap opacity-0 pointer-events-none scale-95 origin-left shrink-0">
+                        <span class="font-suwannaphum tracking-wide">🎁 30% OFF</span>
                     </a>
                 </div>
 
@@ -1633,7 +1633,7 @@
             }, 1000);
         }
 
-        // Promo badge floating logic
+       // Promo badge floating logic
         window.checkPromoScroll = function() {
             const navBadge = document.getElementById('nav-promo-badge');
             if (!navBadge) return;
@@ -1643,7 +1643,6 @@
                 navBadge.style.display = 'none';
                 return;
             } else {
-                // Ensure it reserves space while the promotion campaign is running
                 navBadge.style.display = 'flex';
             }
             
