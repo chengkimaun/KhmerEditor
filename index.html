@@ -177,19 +177,19 @@
                 </div>
 
                 <!-- Desktop Links (Hidden on Mobile) -->
-                <div class="hidden md:flex space-x-6 lg:space-x-8 text-[14px] lg:text-[15px] font-semibold text-gray-600 dark:text-gray-300 font-inter items-center">
-                    <a href="#home" class="hover:text-blue-600 dark:hover:text-blue-400 transition" data-km="ទំព័រដើម" data-en="Home">ទំព័រដើម</a>
-                    <a href="#features" class="hover:text-blue-600 dark:hover:text-blue-400 transition" data-km="មុខងារ" data-en="Features">មុខងារ</a>
-                    <a href="#pricing" class="hover:text-blue-600 dark:hover:text-blue-400 transition" data-km="កញ្ចប់តម្លៃ" data-en="Pricing">កញ្ចប់តម្លៃ</a>
-                    <a href="#tutorial" class="hover:text-blue-600 dark:hover:text-blue-400 transition" data-km="វីឌីអូ" data-en="Tutorial">វីឌីអូ</a>
-                    <a href="#contact" class="hover:text-blue-600 dark:hover:text-blue-400 transition" data-km="ទំនាក់ទំនង" data-en="Contact">ទំនាក់ទំនង</a>
+                <div class="hidden md:flex space-x-6 lg:space-x-8 text-[14px] lg:text-[15px] font-semibold text-gray-600 dark:text-gray-300 font-suwannaphum items-center">
+                    <a href="#home" class="hover:text-blue-600 dark:hover:text-blue-400 transition tracking-wide" data-km="ទំព័រដើម" data-en="Home">ទំព័រដើម</a>
+                    <a href="#features" class="hover:text-blue-600 dark:hover:text-blue-400 transition tracking-wide" data-km="មុខងារ" data-en="Features">មុខងារ</a>
+                    <a href="#pricing" class="hover:text-blue-600 dark:hover:text-blue-400 transition tracking-wide" data-km="កញ្ចប់តម្លៃ" data-en="Pricing">កញ្ចប់តម្លៃ</a>
+                    <a href="#tutorial" class="hover:text-blue-600 dark:hover:text-blue-400 transition tracking-wide" data-km="វីឌីអូ" data-en="Tutorial">វីឌីអូ</a>
+                    <a href="#contact" class="hover:text-blue-600 dark:hover:text-blue-400 transition tracking-wide" data-km="ទំនាក់ទំនង" data-en="Contact">ទំនាក់ទំនង</a>
                     
                     <!-- Vertical Divider -->
                     <div class="h-4 w-px bg-gray-300 dark:bg-slate-700 hidden lg:block"></div>
                     
                     <!-- Legal Links -->
-                    <a href="#terms" class="hover:text-blue-600 dark:hover:text-blue-400 transition hidden lg:block" data-km="លក្ខខណ្ឌ" data-en="Terms">លក្ខខណ្ឌ</a>
-                    <a href="#privacy" class="hover:text-blue-600 dark:hover:text-blue-400 transition hidden lg:block" data-km="ឯកជនភាព" data-en="Privacy">ឯកជនភាព</a>
+                    <a href="#terms" class="hover:text-blue-600 dark:hover:text-blue-400 transition hidden lg:block tracking-wide" data-km="លក្ខខណ្ឌ" data-en="Terms">លក្ខខណ្ឌ</a>
+                    <a href="#privacy" class="hover:text-blue-600 dark:hover:text-blue-400 transition hidden lg:block tracking-wide" data-km="ឯកជនភាព" data-en="Privacy">ឯកជនភាព</a>
                 </div>
 
                 <!-- Action Buttons & Toggles (Desktop) -->
@@ -1620,14 +1620,17 @@
             const navBadge = document.getElementById('nav-promo-badge');
             if (!navBadge || !isPromoActive) return;
             
-            const hash = window.location.hash || '#home';
-            // Always show on specific legal/download pages
-            if (hash === '#download' || hash === '#terms' || hash === '#privacy') {
+            const rawHash = window.location.hash || '#home';
+            // Extract just the page name, ignoring any query parameters like ?v=video-2
+            const [hashPath] = rawHash.split('?');
+            
+            // Always show on specific legal, download, and tutorial pages
+            if (hashPath === '#download' || hashPath === '#terms' || hashPath === '#privacy' || hashPath === '#tutorial') {
                 navBadge.style.display = 'flex';
                 return;
             }
 
-            // On main page, show only after scrolling down
+            // On the main page, show only after scrolling down
             if (window.scrollY > 150) {
                 navBadge.style.display = 'flex';
             } else {
