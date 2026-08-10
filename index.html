@@ -165,13 +165,14 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-20 items-center">
                 <!-- Logo & Nav Badge -->
-                <div class="flex items-center gap-2 sm:gap-3 z-50 relative flex-nowrap overflow-hidden">
+                <!-- Logo & Nav Badge -->
+                <div class="flex items-center gap-2 sm:gap-3 z-50 relative flex-nowrap overflow-hidden min-w-[200px] sm:min-w-[280px]">
                     <a href="#home" class="flex items-center gap-2 sm:gap-3 text-lg sm:text-2xl font-bold brand-blue dark:text-blue-400 font-inter shrink-0">
                         <img src="logo-filled.png" alt="Logo" class="w-8 h-8 sm:w-10 sm:h-10 object-contain shrink-0">
                         <span class="truncate">Khmer Editor</span>
                     </a>
-                    <!-- Nav Promo Badge (Now uses Opacity to reserve space securely) -->
-                    <a href="#pricing" id="nav-promo-badge" class="bg-gradient-to-r from-red-500 to-rose-600 text-white px-2 py-1 sm:px-2.5 rounded-full text-[10px] sm:text-xs font-bold shadow-sm hover:brightness-110 transition-all duration-300 flex items-center gap-1 border border-red-400/50 whitespace-nowrap opacity-0 pointer-events-none scale-95 origin-left shrink-0">
+                    <!-- Nav Promo Badge (Uses strictly Opacity and Pointer Events to reserve space) -->
+                    <a href="#pricing" id="nav-promo-badge" class="bg-gradient-to-r from-red-500 to-rose-600 text-white px-2 py-1 sm:px-2.5 rounded-full text-[10px] sm:text-xs font-bold shadow-sm hover:brightness-110 transition-opacity duration-300 flex items-center gap-1 border border-red-400/50 whitespace-nowrap opacity-0 pointer-events-none shrink-0">
                         <span class="font-suwannaphum tracking-wide">🎁 30% OFF</span>
                     </a>
                 </div>
@@ -1649,12 +1650,11 @@
             const navBadge = document.getElementById('nav-promo-badge');
             if (!navBadge) return;
             
-            // If the promo timer has completely expired, remove the space permanently
+            // If the promo timer has completely expired, hide it permanently
             if (!isPromoActive) {
-                navBadge.style.display = 'none';
+                navBadge.classList.add('opacity-0', 'pointer-events-none');
+                navBadge.classList.remove('opacity-100', 'pointer-events-auto');
                 return;
-            } else {
-                navBadge.style.display = 'flex';
             }
             
             const rawHash = window.location.hash || '#home';
@@ -1662,18 +1662,18 @@
             
             // Always show on specific legal, download, and tutorial pages
             if (hashPath === '#download' || hashPath === '#terms' || hashPath === '#privacy' || hashPath === '#tutorial') {
-                navBadge.classList.remove('opacity-0', 'pointer-events-none', 'scale-95');
-                navBadge.classList.add('opacity-100', 'pointer-events-auto', 'scale-100');
+                navBadge.classList.remove('opacity-0', 'pointer-events-none');
+                navBadge.classList.add('opacity-100', 'pointer-events-auto');
                 return;
             }
 
-            // On the main page, show only after scrolling down
+            // On the main page, show only after scrolling down past the hero banner
             if (window.scrollY > 150) {
-                navBadge.classList.remove('opacity-0', 'pointer-events-none', 'scale-95');
-                navBadge.classList.add('opacity-100', 'pointer-events-auto', 'scale-100');
+                navBadge.classList.remove('opacity-0', 'pointer-events-none');
+                navBadge.classList.add('opacity-100', 'pointer-events-auto');
             } else {
-                navBadge.classList.remove('opacity-100', 'pointer-events-auto', 'scale-100');
-                navBadge.classList.add('opacity-0', 'pointer-events-none', 'scale-95');
+                navBadge.classList.remove('opacity-100', 'pointer-events-auto');
+                navBadge.classList.add('opacity-0', 'pointer-events-none');
             }
         };
 
