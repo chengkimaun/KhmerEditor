@@ -161,21 +161,18 @@
 <body class="bg-[#f8fafc] dark:bg-darkbg text-gray-800 dark:text-gray-200 antialiased selection:bg-blue-200 selection:text-blue-900 transition-colors duration-300 flex flex-col min-h-screen">
 
     <!-- Navigation -->
-    <!-- Navigation -->
-    <!-- Added explicit h-20 here to bulletproof the height -->
-    <nav class="fixed top-0 left-0 w-full h-20 bg-white/95 dark:bg-darkbg/95 backdrop-blur-md shadow-sm z-50 transition-colors duration-300 border-b border-gray-100 dark:border-slate-800 shrink-0">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full">
-            <!-- Changed h-20 to h-full here -->
-            <div class="flex justify-between h-full items-center">
+    <nav class="fixed top-0 left-0 w-full bg-white/95 dark:bg-darkbg/95 backdrop-blur-md shadow-sm z-50 transition-colors duration-300 border-b border-gray-100 dark:border-slate-800 shrink-0">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
                 <!-- Logo & Nav Badge -->
-                <div class="flex items-center gap-2 sm:gap-3 z-50 relative flex-nowrap overflow-hidden">
-                    <a href="#home" class="flex items-center gap-2 sm:gap-3 text-lg sm:text-2xl font-bold brand-blue dark:text-blue-400 font-inter shrink-0">
-                        <img src="logo-filled.png" alt="Logo" class="w-8 h-8 sm:w-10 sm:h-10 object-contain shrink-0">
-                        <span class="truncate">Khmer Editor</span>
+                <div class="flex items-center gap-2 sm:gap-3 z-50 h-full flex-shrink-0">
+                    <a href="#home" class="flex items-center gap-2 sm:gap-3 text-lg sm:text-2xl font-bold brand-blue dark:text-blue-400 font-inter whitespace-nowrap">
+                        <img src="logo-filled.png" alt="Logo" class="w-8 h-8 sm:w-10 sm:h-10 object-contain flex-shrink-0">
+                        <span>Khmer Editor</span>
                     </a>
-                    <!-- Nav Promo Badge (Scale animation entirely removed, uses transition-opacity) -->
-                    <a href="#pricing" id="nav-promo-badge" class="bg-gradient-to-r from-red-500 to-rose-600 text-white px-2 py-1 sm:px-2.5 rounded-full text-[10px] sm:text-xs font-bold shadow-sm hover:brightness-110 transition-opacity duration-300 flex items-center gap-1 border border-red-400/50 whitespace-nowrap opacity-0 pointer-events-none shrink-0">
-                        <span class="font-suwannaphum tracking-wide">🎁 30% OFF</span>
+                    <!-- Nav Promo Badge (Optimized visibility classes) -->
+                    <a href="#pricing" id="nav-promo-badge" class="bg-gradient-to-r from-red-500 to-rose-600 text-white px-2.5 py-1 rounded-full text-[10px] sm:text-xs font-bold shadow-sm hover:brightness-110 transition-opacity duration-300 flex items-center border border-red-400/50 whitespace-nowrap invisible opacity-0 pointer-events-none">
+                        <span class="font-suwannaphum tracking-wide leading-none pt-0.5">🎁 30% OFF</span>
                     </a>
                 </div>
 
@@ -1647,35 +1644,40 @@
             }, 1000);
         }
 
-       // Promo badge floating logic
+       // Promo badge floating logic (Optimized for Mobile Scroll Performance)
         window.checkPromoScroll = function() {
             const navBadge = document.getElementById('nav-promo-badge');
             if (!navBadge) return;
             
             // If the promo timer has completely expired, hide it permanently
             if (!isPromoActive) {
-                navBadge.classList.add('opacity-0', 'pointer-events-none');
-                navBadge.classList.remove('opacity-100', 'pointer-events-auto');
+                navBadge.style.display = 'none';
                 return;
+            } else {
+                navBadge.style.display = 'flex';
             }
             
             const rawHash = window.location.hash || '#home';
             const [hashPath] = rawHash.split('?');
             
-            // Always show on specific legal, download, and tutorial pages
+            // Determine if the badge SHOULD be visible based on page or scroll
+            let shouldBeVisible = false;
+            
             if (hashPath === '#download' || hashPath === '#terms' || hashPath === '#privacy' || hashPath === '#tutorial') {
-                navBadge.classList.remove('opacity-0', 'pointer-events-none');
-                navBadge.classList.add('opacity-100', 'pointer-events-auto');
-                return;
+                shouldBeVisible = true;
+            } else if (window.scrollY > 150) {
+                shouldBeVisible = true;
             }
 
-            // On the main page, show only after scrolling down
-            if (window.scrollY > 150) {
-                navBadge.classList.remove('opacity-0', 'pointer-events-none');
-                navBadge.classList.add('opacity-100', 'pointer-events-auto');
-            } else {
-                navBadge.classList.remove('opacity-100', 'pointer-events-auto');
-                navBadge.classList.add('opacity-0', 'pointer-events-none');
+            // Only update DOM if the state actually changes (Prevents mobile scroll jitter/chopping)
+            const isCurrentlyVisible = navBadge.classList.contains('opacity-100');
+            
+            if (shouldBeVisible && !isCurrentlyVisible) {
+                navBadge.classList.remove('invisible', 'opacity-0', 'pointer-events-none');
+                navBadge.classList.add('visible', 'opacity-100', 'pointer-events-auto');
+            } else if (!shouldBeVisible && isCurrentlyVisible) {
+                navBadge.classList.remove('visible', 'opacity-100', 'pointer-events-auto');
+                navBadge.classList.add('invisible', 'opacity-0', 'pointer-events-none');
             }
         };
 
