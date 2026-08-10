@@ -719,11 +719,22 @@
 
                     <!-- Video Embed Section -->
                     <div class="max-w-4xl mx-auto relative z-10">
+                        <!-- Moved description to the top and applied Khmer font -->
+                        <p class="text-center text-sm text-gray-500 dark:text-gray-400 mb-4 font-suwannaphum tracking-wide" data-km="វីដេអូណែនាំពីរបៀបដំឡើង (2 minutes only)" data-en="Detailed Installation Video Guide">
+                            វីដេអូណែនាំពីរបៀបដំឡើង (2 minutes only)
+                        </p>
+                        
                         <div class="w-full aspect-video rounded-2xl shadow-lg border border-gray-200 dark:border-slate-700 overflow-hidden bg-gray-100 dark:bg-slate-800">
                             <!-- Corrected YouTube Embed URL -->
                             <iframe class="w-full h-full" src="https://www.youtube.com/embed/JTq8HGcDAxM" title="Installation Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                         </div>
-                        <p class="text-center text-sm text-gray-500 dark:text-gray-400 mt-4 font-inter" data-km="វីដេអូណែនាំពីរបៀបដំឡើង (2 minutes only)" data-en="Detailed Installation Video Guide">វីដេអូណែនាំពីរបៀបដំឡើង  (2 minutes only)</p>
+
+                        <!-- New redirect link below the video -->
+                        <div class="text-center mt-5">
+                            <a href="#tutorial?v=more-videos-grid" class="inline-flex items-center gap-1.5 text-[15px] font-bold text-brand-blue dark:text-blue-400 hover:text-blue-600 dark:hover:text-blue-300 hover:underline transition-colors duration-300 font-suwannaphum tracking-wide" data-km="▶ មើលវីដេអូផ្សេងទៀត" data-en="▶ Watch more videos">
+                                ▶ មើលវីដេអូផ្សេងទៀត
+                            </a>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -1141,7 +1152,7 @@
                     </div>
 
                     <!-- 3 Columns x 2 Rows Grid for 6 Videos -->
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto relative z-10">
+                    <div id="more-videos-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto relative z-10 scroll-mt-28">    
                         
                         <!-- Video 2 -->
                         <div id="video-2" class="flex flex-col group scroll-mt-28">
