@@ -160,43 +160,40 @@
 </head>
 <body class="bg-[#f8fafc] dark:bg-darkbg text-gray-800 dark:text-gray-200 antialiased selection:bg-blue-200 selection:text-blue-900 transition-colors duration-300 flex flex-col min-h-screen">
 
-   <!-- Navigation (Matched to Literature Matrix: 'sticky' instead of 'fixed') -->
-    <nav class="sticky top-0 left-0 w-full bg-white/95 dark:bg-darkbg/95 backdrop-blur-md shadow-sm z-50 transition-colors duration-300 border-b border-gray-100 dark:border-slate-800">
-        <!-- Replaced 'h-20' with 'py-4 sm:py-5' for natural vertical centering -->
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-5">
-            <div class="flex justify-between items-center w-full">
-                
-                <!-- Logo & Nav Badge (Left Side) -->
-                <!-- Added md:w-[320px] to lock the width on desktop, keeping the center menu stable -->
-                <div class="flex items-center gap-2 sm:gap-3 z-50 md:w-[320px] shrink min-w-0">
-                    <!-- Removed shrink-0 so the truncate actually works on small mobile screens! -->
-                    <a href="#home" class="flex items-center gap-1.5 sm:gap-3 text-lg sm:text-2xl font-bold brand-blue dark:text-blue-400 font-inter min-w-0">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 w-full bg-white/95 dark:bg-darkbg/95 backdrop-blur-md shadow-sm z-50 transition-colors duration-300 border-b border-gray-100 dark:border-slate-800 shrink-0">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <!-- Logo & Nav Badge -->
+                <div class="flex items-center gap-2 sm:gap-3 z-50 relative flex-nowrap overflow-hidden">
+                    <a href="#home" class="flex items-center gap-2 sm:gap-3 text-lg sm:text-2xl font-bold brand-blue dark:text-blue-400 font-inter shrink-0">
                         <img src="logo-filled.png" alt="Logo" class="w-8 h-8 sm:w-10 sm:h-10 object-contain shrink-0">
                         <span class="truncate">Khmer Editor</span>
                     </a>
-                    <!-- Nav Promo Badge (Standard display toggle) -->
-                    <a href="#pricing" id="nav-promo-badge" style="display: none;" class="bg-gradient-to-r from-red-500 to-rose-600 text-white px-2 py-1 sm:px-2.5 rounded-full text-[10px] sm:text-xs font-bold shadow-sm hover:brightness-110 transition-all duration-300 items-center gap-1 border border-red-400/50 whitespace-nowrap shrink-0">
-                        <span class="font-suwannaphum tracking-wide leading-none pt-0.5">🎁 30% OFF</span>
+                    <!-- Nav Promo Badge (Now uses Opacity to reserve space securely) -->
+                    <a href="#pricing" id="nav-promo-badge" class="bg-gradient-to-r from-red-500 to-rose-600 text-white px-2 py-1 sm:px-2.5 rounded-full text-[10px] sm:text-xs font-bold shadow-sm hover:brightness-110 transition-all duration-300 flex items-center gap-1 border border-red-400/50 whitespace-nowrap opacity-0 pointer-events-none scale-95 origin-left shrink-0">
+                        <span class="font-suwannaphum tracking-wide">🎁 30% OFF</span>
                     </a>
                 </div>
 
-                <!-- Desktop Links (Center) -->
-                <div class="hidden md:flex space-x-6 lg:space-x-8 text-[14px] lg:text-[15px] font-semibold text-gray-600 dark:text-gray-300 font-suwannaphum items-center justify-center flex-1">
+               <!-- Desktop Links (Hidden on Mobile) -->
+                <div class="hidden md:flex space-x-6 lg:space-x-8 text-[14px] lg:text-[15px] font-semibold text-gray-600 dark:text-gray-300 font-suwannaphum items-center">
                     <a href="#home" class="nav-link hover:text-blue-600 dark:hover:text-blue-400 transition tracking-wide" data-km="ទំព័រដើម" data-en="Home">ទំព័រដើម</a>
                     <a href="#features" class="nav-link hover:text-blue-600 dark:hover:text-blue-400 transition tracking-wide" data-km="មុខងារ" data-en="Features">មុខងារ</a>
                     <a href="#pricing" class="nav-link hover:text-blue-600 dark:hover:text-blue-400 transition tracking-wide" data-km="កញ្ចប់តម្លៃ" data-en="Pricing">កញ្ចប់តម្លៃ</a>
                     <a href="#tutorial" class="nav-link hover:text-blue-600 dark:hover:text-blue-400 transition tracking-wide" data-km="វីឌីអូ" data-en="Tutorial">វីឌីអូ</a>
                     <a href="#contact" class="nav-link hover:text-blue-600 dark:hover:text-blue-400 transition tracking-wide" data-km="ទំនាក់ទំនង" data-en="Contact">ទំនាក់ទំនង</a>
                     
+                    <!-- Vertical Divider -->
                     <div class="h-4 w-px bg-gray-300 dark:bg-slate-700 hidden lg:block"></div>
                     
+                    <!-- Legal Links -->
                     <a href="#terms" class="nav-link hover:text-blue-600 dark:hover:text-blue-400 transition hidden lg:block tracking-wide" data-km="លក្ខខណ្ឌ" data-en="Terms">លក្ខខណ្ឌ</a>
                     <a href="#privacy" class="nav-link hover:text-blue-600 dark:hover:text-blue-400 transition hidden lg:block tracking-wide" data-km="ឯកជនភាព" data-en="Privacy">ឯកជនភាព</a>
                 </div>
 
-                <!-- Action Buttons & Toggles (Right Side) -->
-                <!-- Added md:w-[320px] and justify-end to mirror the left side, locking the center perfectly -->
-                <div class="hidden md:flex items-center gap-2 lg:gap-3 font-inter md:w-[320px] justify-end shrink-0">
+                <!-- Action Buttons & Toggles (Desktop) -->
+                <div class="hidden md:flex items-center gap-2 lg:gap-3 font-inter">
                     <button onclick="toggleLanguage()" class="flex items-center gap-1.5 px-3 py-1.5 rounded-md border border-gray-200 dark:border-slate-700 hover:bg-gray-100 dark:hover:bg-slate-800 text-sm font-semibold transition text-gray-600 dark:text-gray-300">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"></path></svg>
                         <span id="lang-indicator">En/Kh</span>
@@ -210,7 +207,7 @@
                 </div>
 
                 <!-- Mobile Menu Buttons -->
-                <div class="flex items-center md:hidden gap-2 z-50 shrink-0">
+                <div class="flex items-center md:hidden gap-2 z-50 relative">
                     <button onclick="toggleTheme()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-slate-800 transition focus:outline-none border border-gray-200 dark:border-slate-700" aria-label="Toggle Dark Mode">
                         <span id="theme-icon-mobile" class="text-base leading-none flex items-center justify-center w-5 h-5">🌙</span>
                     </button>
@@ -223,7 +220,6 @@
 
         <!-- Mobile Menu Dropdown -->
         <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-white dark:bg-darkcard border-b border-gray-200 dark:border-slate-700 shadow-xl md:hidden flex-col p-5 space-y-5 font-semibold text-gray-700 dark:text-gray-300 font-inter transition-all">
-            <!-- (Your mobile links remain exactly the same) -->
             <a href="#home" class="nav-link block text-lg hover:text-blue-600 dark:hover:text-blue-400" data-km="ទំព័រដើម" data-en="Home">ទំព័រដើម</a>
             <a href="#features" class="nav-link block text-lg hover:text-blue-600 dark:hover:text-blue-400" data-km="មុខងារ" data-en="Features">មុខងារ</a>
             <a href="#pricing" class="nav-link block text-lg hover:text-blue-600 dark:hover:text-blue-400" data-km="កញ្ចប់តម្លៃ" data-en="Pricing">កញ្ចប់តម្លៃ</a>
@@ -1648,31 +1644,36 @@
             }, 1000);
         }
 
-       // Promo badge floating logic (Mirrors Literature Matrix logic)
+       // Promo badge floating logic
         window.checkPromoScroll = function() {
             const navBadge = document.getElementById('nav-promo-badge');
             if (!navBadge) return;
             
-            // If the promo timer has completely expired, hide it permanently
+            // If the promo timer has completely expired, remove the space permanently
             if (!isPromoActive) {
                 navBadge.style.display = 'none';
                 return;
+            } else {
+                navBadge.style.display = 'flex';
             }
             
             const rawHash = window.location.hash || '#home';
             const [hashPath] = rawHash.split('?');
             
             // Always show on specific legal, download, and tutorial pages
-            if (hashPath === '#download' || hashPath === '#terms' || hashPath === '#privacy' || hashPath === '#tutorial' || hashPath === '#contact') {
-                navBadge.style.display = 'flex';
+            if (hashPath === '#download' || hashPath === '#terms' || hashPath === '#privacy' || hashPath === '#tutorial') {
+                navBadge.classList.remove('opacity-0', 'pointer-events-none', 'scale-95');
+                navBadge.classList.add('opacity-100', 'pointer-events-auto', 'scale-100');
                 return;
             }
 
             // On the main page, show only after scrolling down
             if (window.scrollY > 150) {
-                navBadge.style.display = 'flex';
+                navBadge.classList.remove('opacity-0', 'pointer-events-none', 'scale-95');
+                navBadge.classList.add('opacity-100', 'pointer-events-auto', 'scale-100');
             } else {
-                navBadge.style.display = 'none';
+                navBadge.classList.remove('opacity-100', 'pointer-events-auto', 'scale-100');
+                navBadge.classList.add('opacity-0', 'pointer-events-none', 'scale-95');
             }
         };
 
