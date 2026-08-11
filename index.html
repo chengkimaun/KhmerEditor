@@ -160,67 +160,65 @@
 </head>
 <body class="bg-[#f8fafc] dark:bg-darkbg text-gray-800 dark:text-gray-200 antialiased selection:bg-blue-200 selection:text-blue-900 transition-colors duration-300 flex flex-col min-h-screen">
 
-<!-- Navigation -->
+   <!-- Navigation -->
     <nav class="fixed top-0 left-0 w-full bg-white/95 dark:bg-darkbg/95 backdrop-blur-md shadow-sm z-50 transition-colors duration-300 border-b border-gray-100 dark:border-slate-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-20 items-center flex-nowrap gap-4">
+        <!-- Main Container (Strictly locked to h-20 to prevent vertical chopping) -->
+        <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20">
+            <div class="relative flex justify-between items-center h-full w-full">
                 
-                <!-- Logo & Nav Badge (Left Side) -->
-                <div class="flex items-center gap-2 sm:gap-3 z-50 flex-nowrap shrink-0">
-                    <a href="#home" class="flex items-center gap-1.5 sm:gap-3 text-lg sm:text-2xl font-bold brand-blue dark:text-blue-400 font-inter shrink-0 whitespace-nowrap">
-                        <img src="logo-filled.png" alt="Logo" class="w-8 h-8 sm:w-10 sm:h-10 object-contain shrink-0">
+                <!-- Left Side: Logo & Nav Badge -->
+                <div class="flex items-center gap-2 sm:gap-3 h-full z-20 shrink-0">
+                    <a href="#home" class="flex items-center gap-1.5 sm:gap-2 text-xl sm:text-2xl font-bold brand-blue dark:text-blue-400 font-inter whitespace-nowrap">
+                        <img src="logo-filled.png" alt="Logo" class="w-8 h-8 sm:w-10 sm:h-10 object-contain">
                         <span>Khmer Editor</span>
                     </a>
-                    <!-- Nav Promo Badge (Restored next to logo) -->
-                    <a href="#pricing" id="nav-promo-badge" style="display: none;" class="bg-gradient-to-r from-red-500 to-rose-600 text-white px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full text-[10px] sm:text-xs font-bold shadow-sm hover:brightness-110 transition-all duration-300 flex items-center gap-1 border border-red-400/50 whitespace-nowrap shrink-0">
+                    <!-- Nav Promo Badge -->
+                    <a href="#pricing" id="nav-promo-badge" style="display: none;" class="bg-gradient-to-r from-red-500 to-rose-600 text-white px-2.5 py-1 rounded-full text-[10px] sm:text-xs font-bold shadow-sm hover:brightness-110 items-center gap-1 border border-red-400/50 whitespace-nowrap ml-1 sm:ml-2">
                         <span class="font-suwannaphum tracking-wide leading-none pt-0.5">🎁 30% OFF</span>
                     </a>
                 </div>
 
-                <!-- Desktop Menu Group (Moved entirely to the Right!) -->
-                <div class="hidden md:flex items-center justify-end flex-grow gap-4 lg:gap-6 overflow-hidden">
+                <!-- Center: Desktop Links (ABSOLUTELY POSITIONED FOR ZERO LAYOUT SHIFT) -->
+                <!-- Because this is absolute, the left and right sides can change width without shifting these links! -->
+                <div class="hidden lg:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 items-center space-x-5 xl:space-x-8 text-[14px] xl:text-[15px] font-semibold text-gray-600 dark:text-gray-300 font-suwannaphum whitespace-nowrap z-10 w-max">
+                    <a href="#home" class="nav-link hover:text-blue-600 dark:hover:text-blue-400 transition tracking-wide" data-km="ទំព័រដើម" data-en="Home">ទំព័រដើម</a>
+                    <a href="#features" class="nav-link hover:text-blue-600 dark:hover:text-blue-400 transition tracking-wide" data-km="មុខងារ" data-en="Features">មុខងារ</a>
+                    <a href="#pricing" class="nav-link hover:text-blue-600 dark:hover:text-blue-400 transition tracking-wide" data-km="កញ្ចប់តម្លៃ" data-en="Pricing">កញ្ចប់តម្លៃ</a>
+                    <a href="#tutorial" class="nav-link hover:text-blue-600 dark:hover:text-blue-400 transition tracking-wide" data-km="វីឌីអូ" data-en="Tutorial">វីឌីអូ</a>
+                    <a href="#contact" class="nav-link hover:text-blue-600 dark:hover:text-blue-400 transition tracking-wide" data-km="ទំនាក់ទំនង" data-en="Contact">ទំនាក់ទំនង</a>
                     
-                    <!-- Desktop Links (Added whitespace-nowrap so they NEVER break into 2 lines) -->
-                    <div class="flex space-x-3 lg:space-x-5 text-[14px] lg:text-[15px] font-semibold text-gray-600 dark:text-gray-300 font-suwannaphum items-center shrink-0">
-                        <a href="#home" class="nav-link hover:text-blue-600 dark:hover:text-blue-400 transition tracking-wide whitespace-nowrap" data-km="ទំព័រដើម" data-en="Home">ទំព័រដើម</a>
-                        <a href="#features" class="nav-link hover:text-blue-600 dark:hover:text-blue-400 transition tracking-wide whitespace-nowrap" data-km="មុខងារ" data-en="Features">មុខងារ</a>
-                        <a href="#pricing" class="nav-link hover:text-blue-600 dark:hover:text-blue-400 transition tracking-wide whitespace-nowrap" data-km="កញ្ចប់តម្លៃ" data-en="Pricing">កញ្ចប់តម្លៃ</a>
-                        <a href="#tutorial" class="nav-link hover:text-blue-600 dark:hover:text-blue-400 transition tracking-wide whitespace-nowrap" data-km="វីឌីអូ" data-en="Tutorial">វីឌីអូ</a>
-                        <a href="#contact" class="nav-link hover:text-blue-600 dark:hover:text-blue-400 transition tracking-wide whitespace-nowrap" data-km="ទំនាក់ទំនង" data-en="Contact">ទំនាក់ទំនង</a>
-                        
-                        <!-- Vertical Divider -->
-                        <div class="h-4 w-px bg-gray-300 dark:bg-slate-700 hidden lg:block shrink-0 mx-1"></div>
-                        
-                        <!-- Legal Links -->
-                        <a href="#terms" class="nav-link hover:text-blue-600 dark:hover:text-blue-400 transition hidden lg:block tracking-wide whitespace-nowrap" data-km="លក្ខខណ្ឌ" data-en="Terms">លក្ខខណ្ឌ</a>
-                        <a href="#privacy" class="nav-link hover:text-blue-600 dark:hover:text-blue-400 transition hidden lg:block tracking-wide whitespace-nowrap" data-km="ឯកជនភាព" data-en="Privacy">ឯកជនភាព</a>
-                    </div>
+                    <div class="h-4 w-px bg-gray-300 dark:bg-slate-700"></div>
+                    
+                    <a href="#terms" class="nav-link hover:text-blue-600 dark:hover:text-blue-400 transition tracking-wide" data-km="លក្ខខណ្ឌ" data-en="Terms">លក្ខខណ្ឌ</a>
+                    <a href="#privacy" class="nav-link hover:text-blue-600 dark:hover:text-blue-400 transition tracking-wide" data-km="ឯកជនភាព" data-en="Privacy">ឯកជនភាព</a>
+                </div>
 
-                    <!-- Action Buttons -->
-                    <div class="flex items-center gap-2 lg:gap-3 font-inter shrink-0">
-                        <button onclick="toggleLanguage()" class="flex items-center gap-1.5 px-2 lg:px-3 py-1.5 rounded-md border border-gray-200 dark:border-slate-700 hover:bg-gray-100 dark:hover:bg-slate-800 text-sm font-semibold transition text-gray-600 dark:text-gray-300 whitespace-nowrap shrink-0">
+                <!-- Right Side: Desktop & Mobile Buttons -->
+                <div class="flex items-center gap-2 lg:gap-3 z-20 shrink-0">
+                    
+                    <!-- Desktop Actions -->
+                    <div class="hidden md:flex items-center gap-2 lg:gap-3 font-inter">
+                        <button onclick="toggleLanguage()" class="flex items-center gap-1.5 px-3 py-1.5 rounded-md border border-gray-200 dark:border-slate-700 hover:bg-gray-100 dark:hover:bg-slate-800 text-sm font-semibold transition text-gray-600 dark:text-gray-300">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"></path></svg>
                             <span id="lang-indicator">En/Kh</span>
                         </button>
-
-                        <button onclick="toggleTheme()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-slate-800 transition focus:outline-none border border-gray-200 dark:border-slate-700 shrink-0" aria-label="Toggle Dark Mode">
+                        <button onclick="toggleTheme()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-slate-800 transition focus:outline-none border border-gray-200 dark:border-slate-700" aria-label="Toggle Dark Mode">
                             <span id="theme-icon" class="text-lg leading-none flex items-center justify-center w-5 h-5">🌙</span>
                         </button>
-
-                        <a href="#download" class="bg-success hover:bg-green-700 text-white px-3 lg:px-5 py-2 rounded-md font-semibold transition shadow-md text-sm lg:text-base whitespace-nowrap font-suwannaphum tracking-wide shrink-0" data-km="ទាញយក" data-en="Download">ទាញយក</a>
+                        <a href="#download" class="bg-success hover:bg-green-700 text-white px-4 lg:px-5 py-2 rounded-md font-semibold transition shadow-md text-sm lg:text-base whitespace-nowrap font-suwannaphum tracking-wide" data-km="ទាញយក" data-en="Download">ទាញយក</a>
                     </div>
-                </div>
 
-                <!-- Mobile Menu Buttons (stays visible on small screens) -->
-                <div class="flex items-center md:hidden gap-2 shrink-0 z-50">
-                    <button onclick="toggleTheme()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-slate-800 transition focus:outline-none border border-gray-200 dark:border-slate-700" aria-label="Toggle Dark Mode">
-                        <span id="theme-icon-mobile" class="text-base leading-none flex items-center justify-center w-5 h-5">🌙</span>
-                    </button>
-                    <button onclick="toggleMobileMenu()" class="p-2 text-gray-600 dark:text-gray-300 focus:outline-none hover:bg-gray-100 dark:hover:bg-slate-800 rounded-md transition">
-                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
-                    </button>
-                </div>
+                    <!-- Mobile Menu Buttons -->
+                    <div class="flex items-center md:hidden gap-2">
+                        <button onclick="toggleTheme()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-slate-800 transition focus:outline-none border border-gray-200 dark:border-slate-700" aria-label="Toggle Dark Mode">
+                            <span id="theme-icon-mobile" class="text-base leading-none flex items-center justify-center w-5 h-5">🌙</span>
+                        </button>
+                        <button onclick="toggleMobileMenu()" class="p-2 text-gray-600 dark:text-gray-300 focus:outline-none hover:bg-gray-100 dark:hover:bg-slate-800 rounded-md transition">
+                            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                        </button>
+                    </div>
 
+                </div>
             </div>
         </div>
 
@@ -1650,7 +1648,7 @@
             }, 1000);
         }
 
-      // Promo badge floating logic (Restored to safe display toggle)
+      // Promo badge floating logic
         window.checkPromoScroll = function() {
             const navBadge = document.getElementById('nav-promo-badge');
             if (!navBadge) return;
@@ -1678,10 +1676,7 @@
             }
         };
 
-        // Listen for scrolling, page loading, and clicking links
         window.addEventListener('scroll', window.checkPromoScroll);
-        window.addEventListener('hashchange', window.checkPromoScroll);
-        window.addEventListener('load', window.checkPromoScroll);
 
 
         // ==========================================
